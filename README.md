@@ -566,11 +566,20 @@ bonus-compose-web-1      nginx:latest    "/docker-entrypoint.…"   web       9 
 * 포트 충돌 오류를 직접 해결하며 실습 문제 해결 경험 축적
 
 ---
-images/task3-nginx-html.jpg
-images/task4-bind-mount.jpg
-images/task5-volume.jpg
-images/task2-nginx-welcome.jpg
-images/task-bonus-8084.jpg
 
+## 실행 화면
 
+### 1. NGINX 기반 HTML 페이지 실행
+<img src="./images/1000013376.jpg" width="700">
 
+### 2. 바인드 마운트 실시간 반영 확인
+<img src="./images/1000013377.jpg" width="700">
+
+### 3. Docker Volume 영속성 확인
+<img src="./images/1000013378.jpg" width="700">
+
+### 4. 기본 NGINX Welcome 페이지 확인
+<img src="./images/1000013379.jpg" width="700">
+
+### 5. localhost:8084 접속 화면
+<img src="./images/1000013380.jpg" width="700">
