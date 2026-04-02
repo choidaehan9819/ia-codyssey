@@ -1,17 +1,3 @@
-맞아. 현재 로그에는 아래 개인정보가 노출돼 있었어.
-
-* 맥 사용자명: `dahan98199819`
-* 학교 이메일: `dahan9819@skuniv.ac.kr`
-* 로컬 전체 경로: `/Users/dahan98199819/...`
-
-GitHub 업로드용으로는 보통 이렇게 바꾸는 게 안전해.
-
-* `dahan98199819@c4r9s6` → `user@macbook`
-* `/Users/dahan98199819/...` → `~/...`
-* `dahan9819@skuniv.ac.kr` → `user_email@example.com`
-
-아래는 **개인정보 가린 전체 README.md 코드**야.
-
 ````markdown
 # AI-SW 개발 워크스테이션 구축
 
