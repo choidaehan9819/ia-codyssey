@@ -1,3 +1,17 @@
+맞아. 현재 로그에는 아래 개인정보가 노출돼 있었어.
+
+* 맥 사용자명: `dahan98199819`
+* 학교 이메일: `dahan9819@skuniv.ac.kr`
+* 로컬 전체 경로: `/Users/dahan98199819/...`
+
+GitHub 업로드용으로는 보통 이렇게 바꾸는 게 안전해.
+
+* `dahan98199819@c4r9s6` → `user@macbook`
+* `/Users/dahan98199819/...` → `~/...`
+* `dahan9819@skuniv.ac.kr` → `user_email@example.com`
+
+아래는 **개인정보 가린 전체 README.md 코드**야.
+
 ````markdown
 # AI-SW 개발 워크스테이션 구축
 
@@ -45,18 +59,18 @@ ls -la
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 Desktop % mkdir ai-sw-workstation
-dahan98199819@c4r9s6 Desktop % cd ai-sw-workstation
-dahan98199819@c4r9s6 ai-sw-workstation % pwd
-/Users/dahan98199819/Desktop/ai-sw-workstation
-dahan98199819@c4r9s6 ai-sw-workstation % touch README.md
-dahan98199819@c4r9s6 ai-sw-workstation % mkdir practice
-dahan98199819@c4r9s6 ai-sw-workstation % touch test.txt
-dahan98199819@c4r9s6 ai-sw-workstation % cp test.txt copy.txt
-dahan98199819@c4r9s6 ai-sw-workstation % mv copy.txt moved.txt
-dahan98199819@c4r9s6 ai-sw-workstation % rm moved.txt
-dahan98199819@c4r9s6 ai-sw-workstation % chmod 644 test.txt
-dahan98199819@c4r9s6 ai-sw-workstation % chmod 755 practice
+user@macbook Desktop % mkdir ai-sw-workstation
+user@macbook Desktop % cd ai-sw-workstation
+user@macbook ai-sw-workstation % pwd
+~/Desktop/ai-sw-workstation
+user@macbook ai-sw-workstation % touch README.md
+user@macbook ai-sw-workstation % mkdir practice
+user@macbook ai-sw-workstation % touch test.txt
+user@macbook ai-sw-workstation % cp test.txt copy.txt
+user@macbook ai-sw-workstation % mv copy.txt moved.txt
+user@macbook ai-sw-workstation % rm moved.txt
+user@macbook ai-sw-workstation % chmod 644 test.txt
+user@macbook ai-sw-workstation % chmod 755 practice
 ```
 
 ### 3-3. 실습 중 있었던 오류
@@ -72,13 +86,13 @@ dahan98199819@c4r9s6 ai-sw-workstation % chmod 755 practice
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 ai-sw-workstation % pwn
+user@macbook ai-sw-workstation % pwn
 zsh: command not found: pwn
 
-dahan98199819@c4r9s6 ai-sw-workstation % ls-la
+user@macbook ai-sw-workstation % ls-la
 zsh: command not found: ls-la
 
-dahan98199819@c4r9s6 ai-sw-workstation % mv copy.txt moved.txt
+user@macbook ai-sw-workstation % mv copy.txt moved.txt
 mv: copy.txt: No such file or directory
 ```
 
@@ -102,7 +116,7 @@ docker info
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 ai-sw-workstation % docker --version
+user@macbook ai-sw-workstation % docker --version
 Docker version 28.5.2, build ecc6942
 ```
 
@@ -168,17 +182,17 @@ docker logs my-web
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 web % docker build -t my-nginx .
+user@macbook web % docker build -t my-nginx .
 [+] Building 8.2s (7/7) FINISHED
 
-dahan98199819@c4r9s6 web % docker run -d -p 8080:80 --name my-web my-nginx
+user@macbook web % docker run -d -p 8080:80 --name my-web my-nginx
 0bcb3989c52ae733dcb58e639c02dcd8251b45ffa0d6bd46ef811985b780a294
 
-dahan98199819@c4r9s6 web % docker ps
+user@macbook web % docker ps
 CONTAINER ID   IMAGE      COMMAND                   CREATED          STATUS         PORTS                                     NAMES
 0bcb3989c52a   my-nginx   "/docker-entrypoint.…"   10 seconds ago   Up 7 seconds   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   my-web
 
-dahan98199819@c4r9s6 web % curl http://localhost:8080
+user@macbook web % curl http://localhost:8080
 <!DOCTYPE html>
 <html>
 <head>
@@ -202,10 +216,10 @@ dahan98199819@c4r9s6 web % curl http://localhost:8080
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 web % docker build -t my-nginx
+user@macbook web % docker build -t my-nginx
 ERROR: docker: 'docker buildx build' requires 1 argument
 
-dahan98199819@c4r9s6 web % docker run -d 8080:80 --name my-web my-nginx
+user@macbook web % docker run -d 8080:80 --name my-web my-nginx
 docker: Error response from daemon: pull access denied for 8080
 
 zsh: event not found: DOCTYPE
@@ -254,10 +268,10 @@ docker ps
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 ~ % docker run -d --name my-web-bind -p 8081:80 -v ~/Desktop/ai-sw-workstation/web:/usr/share/nginx/html nginx
+user@macbook ~ % docker run -d --name my-web-bind -p 8081:80 -v ~/Desktop/ai-sw-workstation/web:/usr/share/nginx/html nginx
 a07f02f562f41ce291640b810e496059cafc56ef24b0f9a4e65f16f90084c700
 
-dahan98199819@c4r9s6 ~ % docker ps
+user@macbook ~ % docker ps
 CONTAINER ID   IMAGE     COMMAND                   CREATED          STATUS          PORTS                                     NAMES
 a07f02f562f4   nginx     "/docker-entrypoint.…"   25 seconds ago   Up 24 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   my-web-bind
 ```
@@ -319,13 +333,13 @@ curl http://127.0.0.1:8082
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 ~ % docker volume create my-nginx-data
+user@macbook ~ % docker volume create my-nginx-data
 my-nginx-data
 
-dahan98199819@c4r9s6 ~ % docker run -d --name my-web-volume -p 8082:80 -v my-nginx-data:/usr/share/nginx/html nginx
+user@macbook ~ % docker run -d --name my-web-volume -p 8082:80 -v my-nginx-data:/usr/share/nginx/html nginx
 358e97c04a9e471688343147863b6f16baa97985a2ccdcc15221603a3f5bb268
 
-dahan98199819@c4r9s6 ~ % curl http://127.0.0.1:8082
+user@macbook ~ % curl http://127.0.0.1:8082
 <!DOCTYPE html>
 <html>
 <head>
@@ -339,13 +353,13 @@ dahan98199819@c4r9s6 ~ % curl http://127.0.0.1:8082
 </body>
 </html>
 
-dahan98199819@c4r9s6 ~ % docker rm -f my-web-volume
+user@macbook ~ % docker rm -f my-web-volume
 my-web-volume
 
-dahan98199819@c4r9s6 ~ % docker run -d --name my-web-volume2 -p 8082:80 -v my-nginx-data:/usr/share/nginx/html nginx
+user@macbook ~ % docker run -d --name my-web-volume2 -p 8082:80 -v my-nginx-data:/usr/share/nginx/html nginx
 e5a86b65b68c540674589508eef0d3d9b21473cbab032240ef7ae1e280b5ac98
 
-dahan98199819@c4r9s6 ~ % curl http://127.0.0.1:8082
+user@macbook ~ % curl http://127.0.0.1:8082
 <!DOCTYPE html>
 <html>
 <head>
@@ -368,7 +382,7 @@ dahan98199819@c4r9s6 ~ % curl http://127.0.0.1:8082
 
 ```bash
 git config --global user.name "최대한"
-git config --global user.email "dahan9819@skuniv.ac.kr"
+git config --global user.email "user_email@example.com"
 git config --global --list
 ```
 
@@ -395,23 +409,23 @@ git branch
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 ~ % git config --global user.email "dahan9819@skuniv.ac.kr"
-dahan98199819@c4r9s6 ~ % git config --global --list
+user@macbook ~ % git config --global user.email "user_email@example.com"
+user@macbook ~ % git config --global --list
 user.name=최대한
-user.email=dahan9819@skuniv.ac.kr
+user.email=user_email@example.com
 
-dahan98199819@c4r9s6 ~ % cd ~/Desktop/ai-sw-workstation
-dahan98199819@c4r9s6 ai-sw-workstation % git init
-Initialized empty Git repository in /Users/dahan98199819/Desktop/ai-sw-workstation/.git/
+user@macbook ~ % cd ~/Desktop/ai-sw-workstation
+user@macbook ai-sw-workstation % git init
+Initialized empty Git repository in ~/Desktop/ai-sw-workstation/.git/
 
-dahan98199819@c4r9s6 ai-sw-workstation % git add .
-dahan98199819@c4r9s6 ai-sw-workstation % git commit -m "Initial commit: AI-SW workstation setup"
-[master (최상위-커밋) 4655712] Initial commit: AI-SW workstation setup
+user@macbook ai-sw-workstation % git add .
+user@macbook ai-sw-workstation % git commit -m "Initial commit: AI-SW workstation setup"
+[master (root-commit) 4655712] Initial commit: AI-SW workstation setup
 
-dahan98199819@c4r9s6 ai-sw-workstation % git branch -m main
-dahan98199819@c4r9s6 ai-sw-workstation % git status
-현재 브랜치 main
-커밋할 사항 없음, 작업 폴더 깨끗함
+user@macbook ai-sw-workstation % git branch -m main
+user@macbook ai-sw-workstation % git status
+On branch main
+nothing to commit, working tree clean
 ```
 
 ---
@@ -439,7 +453,7 @@ services:
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 bonus-compose % docker compose up -d
+user@macbook bonus-compose % docker compose up -d
 Error response from daemon: failed to set up container networking:
 Bind for 0.0.0.0:8081 failed: port is already allocated
 ```
@@ -475,11 +489,11 @@ docker compose down
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 bonus-compose % docker compose up -d
+user@macbook bonus-compose % docker compose up -d
 [+] Running 1/1
 ✔ Container bonus-compose-web-1 Started
 
-dahan98199819@c4r9s6 bonus-compose % docker compose ps
+user@macbook bonus-compose % docker compose ps
 NAME                  IMAGE          COMMAND                   SERVICE   CREATED        STATUS                  PORTS
 bonus-compose-web-1   nginx:latest   "/docker-entrypoint.…"   web       1 second ago   Up Less than a second   0.0.0.0:8083->80/tcp, [::]:8083->80/tcp
 ```
@@ -523,13 +537,13 @@ docker compose down
 ### 관련 로그
 
 ```bash
-dahan98199819@c4r9s6 bonus-compose % docker compose up -d
+user@macbook bonus-compose % docker compose up -d
 [+] Running 3/3
 ✔ Network bonus-compose_default     Created
 ✔ Container bonus-compose-web-1     Started
 ✔ Container bonus-compose-helper-1  Started
 
-dahan98199819@c4r9s6 bonus-compose % docker compose ps
+user@macbook bonus-compose % docker compose ps
 NAME                     IMAGE           COMMAND                   SERVICE   CREATED         STATUS         PORTS
 bonus-compose-helper-1   ubuntu:latest   "bash -c 'while true…"   helper    9 seconds ago   Up 8 seconds
 bonus-compose-web-1      nginx:latest    "/docker-entrypoint.…"   web       9 seconds ago   Up 8 seconds   0.0.0.0:8083->80/tcp, [::]:8083->80/tcp
@@ -563,9 +577,7 @@ bonus-compose-web-1      nginx:latest    "/docker-entrypoint.…"   web       9 
 
 ---
 
-## 13. 느낀 점
 
-이번 실습을 통해 단순히 Docker 명령어를 실행하는 것에서 끝나는 것이 아니라, 이미지 빌드, 컨테이너 실행, 포트 매핑, 바인드 마운트, 볼륨 영속성, Git 버전 관리, Docker Compose 기반 다중 컨테이너 구성까지 전반적인 개발 워크스테이션의 기초를 직접 경험할 수 있었다.
 
-특히 실습 과정에서 `docker build` 명령 형식 오류, 포트 충돌 문제, HTML 작성 시 셸 입력 오류 등을 직접 겪으면서 명령어의 정확한 사용법과 문제 해결 과정의 중요성을 배울 수 있었다. 이러한 경험은 이후 AI/SW 개발 환경을 스스로 구성하고 운영하는 데 큰 도움이 될 것이라고 생각한다.
+
 
