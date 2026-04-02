@@ -193,8 +193,7 @@ user@macbook web % curl http://localhost:8080
 </html>
 ```
 ### 관련 이미지
-
-
+images/무제 폴더/1000013376.jpg
 
 
 ### 5-5. 실습 중 어려웠던 점
