@@ -192,7 +192,7 @@ user@macbook web % curl http://localhost:8080
 </body>
 </html>
 ```
-### 관련 이미지
+
 (./images/1000013376.jpg)
 ### 5-5. 실습 중 어려웠던 점
 
@@ -264,11 +264,6 @@ a07f02f562f4   nginx     "/docker-entrypoint.…"   25 seconds ago   Up 24 secon
 ```
 
 ---
-### 관련 이미지
-
-
-
-
 
 ## 7. Docker Volume 영속성 실습
 
@@ -367,15 +362,6 @@ user@macbook ~ % curl http://127.0.0.1:8082
 ```
 
 ---
-### 관련 이미지
-
-
-
-
-
-
-
-
 
 
 ## 8. Git 저장소 초기화 및 커밋
@@ -431,11 +417,6 @@ nothing to commit, working tree clean
 ```
 
 ---
-### 관련 이미지
-
-
-
-
 
 ## 9. 보너스 과제: Docker Compose 실습
 
@@ -486,13 +467,6 @@ docker compose up -d
 docker compose ps
 docker compose down
 ```
-
-
-
-### 관련 이미지
-
-
-
 
 
 ### 결과
@@ -566,10 +540,6 @@ bonus-compose-web-1      nginx:latest    "/docker-entrypoint.…"   web       9 
 
 ---
 
-### 관련 이미지
-
-
-
 
 ## 11. 전체 실행 포트 정리
 
@@ -596,8 +566,11 @@ bonus-compose-web-1      nginx:latest    "/docker-entrypoint.…"   web       9 
 * 포트 충돌 오류를 직접 해결하며 실습 문제 해결 경험 축적
 
 ---
-
-
+images/task3-nginx-html.jpg
+images/task4-bind-mount.jpg
+images/task5-volume.jpg
+images/task2-nginx-welcome.jpg
+images/task-bonus-8084.jpg
 
 
 
