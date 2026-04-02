@@ -568,18 +568,8 @@ bonus-compose-web-1      nginx:latest    "/docker-entrypoint.…"   web       9 
 ---
 
 ## 실행 화면
-
-### 1. NGINX 기반 HTML 페이지 실행
-<img src="./images/1000013376.jpg" width="700">
-
-### 2. 바인드 마운트 실시간 반영 확인
-<img src="./images/1000013377.jpg" width="700">
-
-### 3. Docker Volume 영속성 확인
-<img src="./images/1000013378.jpg" width="700">
-
-### 4. 기본 NGINX Welcome 페이지 확인
-<img src="./images/1000013379.jpg" width="700">
-
-### 5. localhost:8084 접속 화면
-<img src="./images/1000013380.jpg" width="700">
+![NGINX HTML 실행 결과](./README/1000013376.jpg)
+![바인드 마운트 결과](./README/1000013377.jpg)
+![볼륨 영속성 결과](./README/1000013378.jpg)
+![NGINX Welcome 페이지](./README/1000013379.jpg)
+![localhost 8084 접속 화면](./README/1000013380.jpg)
