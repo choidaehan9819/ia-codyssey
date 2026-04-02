@@ -193,7 +193,7 @@ user@macbook web % curl http://localhost:8080
 </html>
 ```
 ### 관련 이미지
-1000013377.jpg
+
 
 
 
