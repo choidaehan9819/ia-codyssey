@@ -271,9 +271,6 @@ a07f02f562f4   nginx     "/docker-entrypoint.…"   25 seconds ago   Up 24 secon
 
 
 
-
-
-
 ## 7. Docker Volume 영속성 실습
 
 ### 7-1. Volume 생성
