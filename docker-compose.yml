@@ -1,0 +1,14 @@
+services:
+  web:
+    image: nginx:latest
+    container_name: compose-nginx
+    ports:
+      - "8084:80"
+    volumes:
+      - ./index.html:/usr/share/nginx/html/index.html
+
+  apache:
+    image: httpd:latest
+    container_name: compose-apache
+    ports:
+      - "8085:80"
