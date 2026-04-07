@@ -63,12 +63,12 @@ git --version
 | 바인드 마운트 반영 | 완료 | `8081`에서 실시간 반영 확인 |
 | Docker 볼륨 영속성 | 완료 | `8082`에서 삭제 전/후 비교 |
 | Git 설정 | 완료 | `git config --list`, `git init`, `git commit` |
-| GitHub/VSCode 연동 증거 | 보완 필요 | 제출 전 로그인/연동 캡처 추가 권장 |
+| GitHub/VSCode 연동 증거 | 실행해서 보여주기 가능 |  
 | Docker Compose 단일 실행 | 완료 | `docker compose up -d` 확인 |
 | Docker Compose 멀티 컨테이너 | 완료 | 보조 서비스 포함 실행 확인 |
 | Compose 운영 명령어 | 완료 | `up`, `down`, `ps`, `logs` 실습 |
-| 환경 변수 활용 | 설명 포함 | 제출 전 실제 적용 로그 추가 권장 |
-| GitHub SSH 키 설정 | 설명 포함 | 제출 전 실제 키 등록/테스트 로그 추가 권장 |
+| 환경 변수 활용 | 설명 포함 | 실행화면 보이기 가능 |
+| GitHub SSH 키 설정 | 설명 포함 | 등록되어있는거 깃허브에서 확인 가능|
 
 > **주의:** 현재 대화와 업로드 자료 기준으로 작성했다. GitHub/VSCode 로그인 연동 캡처, `docker stats`, Ubuntu 내부 실행 로그, 환경 변수 적용 로그, SSH 연결 테스트 로그가 필요하다면 마지막에 추가하면 된다.
 
