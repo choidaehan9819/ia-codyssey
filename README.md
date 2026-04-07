@@ -55,16 +55,18 @@ git --version
 | 터미널 기본 명령 실습 | 완료 | `pwd`, `ls -la`, `cd`, `touch`, `mkdir`, `cp`, `mv`, `rm` |
 | 파일/디렉토리 권한 변경 | 완료 | `chmod 644`, `chmod 755` |
 | Docker 설치 점검 | 완료 | `docker --version`, `docker info` |
-| Docker 기본 운영 명령 | 부분 완료 | `docker ps`, `docker ps -a`, `docker logs` 기록 있음 |
+| Docker 기본 운영 명령 | 완료 | `docker ps`, `docker ps -a`, `docker logs` 확인 |
 | hello-world 실행 | 완료 | 실행 로그 포함 |
-| Ubuntu 컨테이너 실행 | 설명 포함 | 제출 전 실제 로그 추가 권장 |
+| Ubuntu 컨테이너 실행 | 완료 | 내부 진입 및 기본 명령 수행 |
 | Dockerfile 커스텀 이미지 | 완료 | `my-nginx` 빌드 및 실행 |
-| 포트 매핑 접속 증거 | 완료 | `8080`, `8081`, `8082`, `8083` 사용 |
-| 바인드 마운트 반영 | 완료 | 실시간 반영 설명 및 캡처 포함 |
-| Docker 볼륨 영속성 | 완료 | 삭제 전/후 비교 기록 |
+| 포트 매핑 접속 증거 | 완료 | `8080`에서 확인 |
+| 바인드 마운트 반영 | 완료 | `8081`에서 실시간 반영 확인 |
+| Docker 볼륨 영속성 | 완료 | `8082`에서 삭제 전/후 비교 |
 | Git 설정 | 완료 | `git config --list`, `git init`, `git commit` |
 | GitHub/VSCode 연동 증거 | 보완 필요 | 제출 전 로그인/연동 캡처 추가 권장 |
-| Docker Compose 보너스 | 완료 | 단일/멀티 컨테이너 실행 기록 |
+| Docker Compose 단일 실행 | 완료 | `docker compose up -d` 확인 |
+| Docker Compose 멀티 컨테이너 | 완료 | 보조 서비스 포함 실행 확인 |
+| Compose 운영 명령어 | 완료 | `up`, `down`, `ps`, `logs` 실습 |
 | 환경 변수 활용 | 설명 포함 | 제출 전 실제 적용 로그 추가 권장 |
 | GitHub SSH 키 설정 | 설명 포함 | 제출 전 실제 키 등록/테스트 로그 추가 권장 |
 
@@ -77,19 +79,14 @@ git --version
 ### 4-1. 디렉토리 구조 예시
 
 ```text
-ai-sw-workstation/
+ia-codyssey/
+├── Dockerfile
 ├── README.md
-├── web/
-│   ├── Dockerfile
+├── compose.yaml
+├── app/
 │   └── index.html
-├── bonus-compose/
-│   ├── compose.yaml
-│   └── .env
 └── README/
-    ├── 1000013376.jpg
-    ├── 1000013377.jpg
-    ├── 1000013378.jpg
-    └── 1000013379.jpg
+    └── (캡처 이미지들)
 ```
 
 ### 4-2. 어떤 기준으로 이렇게 구성했는가
@@ -97,24 +94,24 @@ ai-sw-workstation/
 이번 디렉토리 구성 기준은 아래 4가지였다.
 
 1. **역할 분리**
-   - `web/`에는 웹 서버 실행에 필요한 파일만 둔다.
-   - `bonus-compose/`에는 Compose 실습 파일만 둔다.
+   - 루트에는 `Dockerfile`, `compose.yaml`, `README.md`처럼 실행과 문서의 기준 파일을 둔다.
+   - `app/`에는 NGINX가 서빙할 웹 파일을 둔다.
    - `README/`에는 문서용 증빙 이미지만 둔다.
 
 2. **재현 가능성**
    - 다른 사람이 저장소를 열어도 “어느 폴더에서 어떤 명령을 실행해야 하는지” 바로 알 수 있게 하였다.
-   - 예를 들어 `web/` 폴더에서 `docker build -t my-nginx .`를 실행하면 빌드가 가능하다.
+   - 예를 들어 프로젝트 루트에서 `docker build -t my-nginx .`를 실행하면 빌드가 가능하다.
 
 3. **수정 편의성**
-   - 바인드 마운트 실습 시 `web/index.html`만 수정하면 바로 컨테이너 반영 여부를 확인할 수 있도록 했다.
-   - Compose 실습 시 `bonus-compose/compose.yaml`과 `.env`만 수정하면 설정 변경 여부를 확인할 수 있도록 했다.
+   - 바인드 마운트 실습 시 `app/index.html`만 수정하면 바로 컨테이너 반영 여부를 확인할 수 있도록 했다.
+   - Compose 실습 시 `compose.yaml`과 `.env`만 수정하면 설정 변경 여부를 확인할 수 있도록 했다.
 
 4. **제출 정리성**
-   - README 본문, 실행 파일, 보너스 과제, 이미지 캡처를 섞지 않고 분리하여 채점자가 구조를 이해하기 쉽게 구성하였다.
+   - README 본문, 실행 파일, Compose 설정, 캡처 증빙을 섞지 않고 분리하여 채점자가 구조를 이해하기 쉽게 구성하였다.
 
 ### 4-3. 왜 이런 구조가 좋은가
 
-이 구조는 “문서”, “실행 코드”, “보너스 과제”, “캡처 증빙”이 서로 섞이지 않으므로 관리가 쉽다. 또한 Docker 실습에서는 현재 작업 디렉토리가 매우 중요하므로, 폴더 역할을 명확히 나누면 빌드 경로 오류나 잘못된 파일 복사 문제를 줄일 수 있다.
+이 구조는 “문서”, “실행 코드”, “설정 파일”, “캡처 증빙”이 서로 섞이지 않으므로 관리가 쉽다. 또한 Docker 실습에서는 현재 작업 디렉토리가 매우 중요하므로, 폴더 역할을 명확히 나누면 빌드 경로 오류나 잘못된 파일 복사 문제를 줄일 수 있다.
 
 ---
 
@@ -408,17 +405,19 @@ exit
 
 ### 12-1. HTML 파일
 
+이번 실습에서는 `app/index.html` 파일을 작성하여 NGINX 기본 페이지 대신 사용자 정의 페이지가 출력되도록 구성하였다.
+
 ```html
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AI-SW Workstation</title>
 </head>
 <body>
-  <h1>AI/SW 개발 워크스테이션 구축 성공</h1>
-  <p>Docker NGINX 컨테이너 실행 확인</p>
-  <p>작성자: 최대한</p>
+  <h1>🚀 Hello Docker</h1>
+  <p>AI-SW 개발 워크스테이션 과제 페이지</p>
 </body>
 </html>
 ```
@@ -427,7 +426,7 @@ exit
 
 ```dockerfile
 FROM nginx:latest
-COPY index.html /usr/share/nginx/html/index.html
+COPY app/index.html /usr/share/nginx/html/index.html
 ```
 
 ### 12-3. 빌드 및 실행 명령
@@ -446,7 +445,7 @@ docker logs my-web
 - `my-nginx` 이미지 빌드 성공
 - `my-web` 컨테이너 실행 성공
 - 호스트 `8080` 포트를 통해 브라우저 또는 `curl`로 HTML 응답 확인
-- 컨테이너 내부 `index.html`도 정상 교체됨
+- `app/index.html`이 컨테이너 내부 `index.html`로 정상 복사됨
 
 ---
 
@@ -550,7 +549,7 @@ docker run -d -p 8080:80 --name my-web my-nginx
 
 ```bash
 docker rm -f my-web-bind
-docker run -d --name my-web-bind -p 8081:80 -v ~/Desktop/ai-sw-workstation/web:/usr/share/nginx/html nginx
+docker run -d --name my-web-bind -p 8081:80 -v $(pwd)/app:/usr/share/nginx/html nginx
 docker ps
 ```
 
@@ -574,7 +573,7 @@ docker ps
 ### 16-3. 결과
 
 - `8081` 포트에서 컨테이너 실행 성공
-- 로컬 `web/index.html`을 수정하자 컨테이너의 페이지도 즉시 변경됨
+- 로컬 `app/index.html`을 수정하자 컨테이너의 페이지도 즉시 변경됨
 - 이미지 재빌드 없이 변경 사항이 반영되었다는 점에서 개발 중 수정 확인에 유리함
 
 ### 바인드 마운트가 필요한 이유
@@ -668,17 +667,17 @@ git commit -m "Initial commit"
 Docker Compose는 여러 컨테이너의 실행 설정을 YAML 파일에 문서처럼 정리해 두고, `docker compose up` 명령 한 번으로 실행할 수 있게 해주는 도구이다.  
 즉, 원래 터미널에서 길게 입력하던 `docker run` 옵션들을 파일에 적어 두고 재사용 가능하게 만드는 방식이라고 이해할 수 있다.
 
-예를 들어 이미지 이름, 포트, 환경 변수, 볼륨 같은 실행 설정을 YAML 문서에 적어두면, 나중에는 같은 명령을 다시 길게 입력하지 않아도 된다.  
-이 점에서 Compose 파일은 단순 설정 파일이 아니라 **실행 환경을 문서화한 설계서** 역할을 한다.
-
-### 19-1. 기본 구조 예시
+### 19-1. 단일 컨테이너 Compose 예시
 
 ```yaml
 services:
   web:
     image: nginx:latest
+    container_name: compose-nginx
     ports:
-      - "8080:80"
+      - "8083:80"
+    volumes:
+      - ./app:/usr/share/nginx/html
 ```
 
 ### 19-2. 기본 구조 해석
@@ -686,52 +685,44 @@ services:
 - `services` : 실행할 컨테이너들의 묶음
 - `web` : 서비스 이름
 - `image` : 어떤 이미지로 만들지 지정
+- `container_name` : 컨테이너 이름 지정
 - `ports` : 내 컴퓨터 포트와 컨테이너 포트를 연결
+- `volumes` : 로컬 `app` 폴더를 NGINX html 경로와 연결
 
 즉, 위 설정은 `web`이라는 이름의 서비스를 `nginx:latest` 이미지로 만들고,  
-호스트의 `8080` 포트를 컨테이너의 `80` 포트에 연결하겠다는 뜻이다.
+호스트의 `8083` 포트를 컨테이너의 `80` 포트에 연결하며, 로컬 HTML 파일을 바로 반영하도록 구성한 것이다.
 
-### 19-3. 왜 필요한가
+### 19-3. 실행 및 확인 명령
+
+```bash
+docker compose up -d
+docker compose ps
+curl localhost:8083
+```
+
+### 19-4. 왜 필요한가
 
 기존에는 아래처럼 긴 실행 명령을 직접 입력해야 했다.
 
 ```bash
-docker run -d -p 8080:80 nginx
+docker run -d -p 8083:80 -v $(pwd)/app:/usr/share/nginx/html nginx
 ```
 
-하지만 Compose를 사용하면 이미지, 포트, 환경 변수, 볼륨 같은 실행 조건을 파일로 남길 수 있다.  
+하지만 Compose를 사용하면 이미지, 포트, 볼륨 같은 실행 조건을 파일로 남길 수 있다.  
 즉, **명령어 한 줄짜리 실행이 문서화된 실행 설정으로 바뀌는 것**이 핵심이다.
-
-### 19-4. 왜 “문서화된 실행 설정”이 중요한가
-
-`docker run -p 8080:80 -e MODE=dev ...`처럼 직접 명령어를 치면, 시간이 지나면 무슨 옵션을 줬는지 잊기 쉽다.  
-반면 Compose 파일에 적어두면 다음 장점이 있다.
-
-- 실행 조건이 눈에 보인다.
-- 팀원이 같은 환경을 그대로 재현할 수 있다.
-- 과제 제출 시에도 “내가 어떻게 실행했는지”를 명확히 증명할 수 있다.
-
-즉, Compose는 단순히 컨테이너를 띄우는 기능이 아니라,  
-**실행 방법 자체를 기록하고 재현 가능하게 만드는 도구**라고 볼 수 있다.
 
 ### 19-5. 배움 포인트
 
 - 실행 옵션을 파일로 남겨 재현성을 높일 수 있다.
-- 팀원이나 다른 환경에서도 동일한 실행 조건을 공유할 수 있다.
+- 같은 환경을 다시 쉽게 실행할 수 있다.
 - 실행 방식 자체가 문서가 되므로 유지보수에 유리하다.
 
 ---
 
 ## 20. Docker Compose 멀티 컨테이너
 
-Compose를 이용하여 웹 서버와 보조 서비스 2개 이상을 함께 실행하는 구조를 학습하였다.  
-이 단계는 하나의 컨테이너만 띄우는 연습을 넘어서, 실제 서비스처럼 여러 역할을 나누어 실행하는 구조를 경험하는 과정이다.
-
-예를 들어 다음처럼 역할을 나눌 수 있다.
-
-- `web` : nginx 웹 서버
-- `db` : 데이터 저장용 데이터베이스
-- `redis` 또는 `api` : 보조 서비스
+Compose를 이용하여 웹 서버와 보조 서비스 2개 이상을 함께 실행하는 구조를 실습하였다.  
+이번에는 NGINX 웹 서버와 간단한 echo 서비스를 함께 구성하여 멀티 컨테이너 환경을 확인하였다.
 
 ### 20-1. 예시 compose.yaml
 
@@ -739,59 +730,54 @@ Compose를 이용하여 웹 서버와 보조 서비스 2개 이상을 함께 실
 services:
   web:
     image: nginx:latest
+    container_name: compose-nginx
     ports:
-      - "8080:80"
+      - "8083:80"
+    volumes:
+      - ./app:/usr/share/nginx/html
+    depends_on:
+      - echo
 
-  db:
-    image: postgres:18
-    environment:
-      POSTGRES_USER: example
-      POSTGRES_DB: exampledb
+  echo:
+    image: hashicorp/http-echo
+    container_name: compose-echo
+    command: ["-text=hello from echo container"]
+    ports:
+      - "5678:5678"
 ```
 
-### 20-2. 이 구조의 의미
+### 20-2. 확인 방법
+
+```bash
+docker compose up -d
+docker compose ps
+curl localhost:8083
+curl localhost:5678
+```
+
+- `8083`에서는 사용자 정의 HTML 페이지가 출력되었다.
+- `5678`에서는 `hello from echo container` 응답이 확인되었다.
+
+### 20-3. 이 구조의 의미
 
 이 구조의 장점은 컨테이너를 역할별로 분리할 수 있다는 것이다.
 
-- 웹 서버는 화면 제공만 담당
-- DB는 데이터 저장과 관리만 담당
-- 보조 서비스는 캐시, API, 기타 기능만 담당
+- `web` : 화면 제공
+- `echo` : 보조 응답 서비스 제공
 
 즉, 하나의 컨테이너에 모든 기능을 몰아넣는 것이 아니라,  
 **각 기능을 독립된 서비스로 나눠 구성하는 감각**을 익히는 것이 중요하다.
 
-### 20-3. 컨테이너 간 네트워크 통신
+### 20-4. 컨테이너 간 네트워크 통신
 
-과제가 말하는 “컨테이너 간 네트워크 통신”은 Compose가 기본적으로 하나의 네트워크를 자동 생성하고,  
-같은 프로젝트 안의 서비스들이 그 네트워크에 함께 들어가도록 해준다는 뜻이다.
-
-즉:
-
-- `web` 컨테이너에서 `db`라는 이름으로 DB에 접근 가능
-- IP 주소를 직접 외울 필요 없이 서비스 이름이 주소 역할을 함
-
-이것이 바로 **서비스 디스커버리(service discovery)** 의 기초 개념이다.  
-쉽게 말해, 같은 Compose 프로젝트 안에서는 서로를 **서비스 이름으로 찾는다**는 의미다.
-
-### 20-4. 왜 중요한가
-
-멀티 컨테이너 구조를 경험하면,  
-실제 서비스가 여러 역할의 구성 요소로 나뉘어 동작한다는 점을 자연스럽게 이해할 수 있다.
-
-즉, 단순히 컨테이너 2개를 띄운 것이 아니라,
-
-- 서로 독립적으로 실행되지만
-- Compose가 하나의 앱처럼 묶어 관리해 주고
-- 같은 네트워크 안에서 이름으로 통신할 수 있다는 것
-
-을 확인하는 단계라고 볼 수 있다.
+Compose는 기본적으로 하나의 네트워크를 자동 생성하고, 같은 프로젝트 안의 서비스들이 그 네트워크에 함께 들어가도록 해준다.  
+따라서 각 컨테이너는 IP 주소 대신 서비스 이름을 통해 서로를 찾을 수 있다.
 
 ### 20-5. 배움 포인트
 
 - 하나의 애플리케이션이 여러 서비스로 분리될 수 있음을 이해하였다.
 - Compose가 서비스 간 네트워크를 자동으로 구성함을 확인하였다.
-- 컨테이너끼리 이름으로 통신 가능한 구조를 경험하였다.
-- 분산된 구성 요소가 연결되는 방식을 배웠다.
+- 멀티 컨테이너 구성을 실제로 실행하고 검증하였다.
 
 ---
 

@@ -1,0 +1,17 @@
+services:
+  web:
+    image: nginx:latest
+    container_name: compose-nginx
+    ports:
+      - "8083:80"
+    volumes:
+      - ./app:/usr/share/nginx/html
+    depends_on:
+      - echo
+
+  echo:
+    image: hashicorp/http-echo
+    container_name: compose-echo
+    command: ["-text=hello from echo container"]
+    ports:
+      - "5678:5678"

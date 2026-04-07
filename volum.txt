@@ -1,0 +1,8 @@
+docker volume create my-nginx-data
+docker run -d -p 8082:80 --name my-web-volume -v my-nginx-data:/usr/share/nginx/html nginx
+docker exec -it my-web-volume bash
+echo '<h1>Volume Persistence Success</h1>' > /usr/share/nginx/html/index.html
+exit
+docker rm -f my-web-volume
+docker run -d -p 8082:80 --name my-web-volume -v my-nginx-data:/usr/share/nginx/html nginx
+curl localhost:8082

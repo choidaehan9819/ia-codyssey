@@ -1,0 +1,2 @@
+docker run -d -p 8081:80 --name my-web-bind -v $(pwd)/app:/usr/share/nginx/html nginx
+curl localhost:8081
