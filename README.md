@@ -724,7 +724,7 @@ docker run -d -p 8083:80 -v $(pwd)/app:/usr/share/nginx/html nginx
 Compose를 이용하여 웹 서버와 보조 서비스 2개 이상을 함께 실행하는 구조를 실습하였다.  
 이번에는 NGINX 웹 서버와 간단한 echo 서비스를 함께 구성하여 멀티 컨테이너 환경을 확인하였다.
 
-### 20-1. 예시 compose.yaml
+### 20-1. compose.yaml
 
 ```yaml
 services:
@@ -838,47 +838,6 @@ Compose 파일을 읽고 필요한 서비스들을 생성하고 실행한다.
 Dockerfile 또는 Compose 파일에서 환경 변수를 주입하여 포트나 실행 모드를 변경하는 실습을 수행하였다.  
 이 단계의 핵심은 프로그램 코드를 직접 수정하지 않고도, **실행 시점의 설정만 바꾸는 방법**을 배우는 데 있다.
 
-### 22-1. environment 항목 사용 예시
-
-```yaml
-services:
-  web:
-    image: my-web
-    environment:
-      PORT: "8080"
-      MODE: "dev"
-```
-
-### 22-2. .env 파일 사용 예시
-
-`.env` 파일:
-
-```env
-PORT=8080
-MODE=dev
-```
-
-Compose 파일:
-
-```yaml
-services:
-  web:
-    image: my-web
-    environment:
-      PORT: ${PORT}
-      MODE: ${MODE}
-```
-
-또는 포트 연결에도 변수 치환을 사용할 수 있다.
-
-```yaml
-services:
-  web:
-    image: my-web
-    ports:
-      - "${PORT}:80"
-    environment:
-      MODE: ${MODE}
 ```
 
 ### 22-3. 왜 중요한가
