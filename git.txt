@@ -1,0 +1,6 @@
+git status 상태확인
+
+깃 저장
+git add .
+git commit -m "작업 내용 저장"
+git push origin main

@@ -1,2 +1,10 @@
 docker run -d -p 8080:80 --name my-web my-nginx
 curl localhost:8080
+
+
+
+
+도커 실행중인 컨테이너 끌려면 docker stop $(docker ps -q)
+
+중지된 것까지 포함해서 컨테이너를 전부 삭제하려면: docker rm -f $(docker ps -aq)
+이미지 빌드 명령어 : docker build -t my-nginx .
